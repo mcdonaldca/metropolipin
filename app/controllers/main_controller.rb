@@ -1,5 +1,7 @@
 class MainController < ApplicationController
 
+	before_filter :authenticate, :except => [:index]
+
 	def index
 		unless session[:user].nil?
 			redirect_to dashboard_url
@@ -44,5 +46,15 @@ class MainController < ApplicationController
 		session = nil
 		redirect_to root_url
 	end
+
+	private
+
+	def authenticate
+		if session[:user].nil?
+			redirect_to root_url
+		end
+	end
+
+
 
 end
