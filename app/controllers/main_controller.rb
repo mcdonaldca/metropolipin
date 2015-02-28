@@ -4,7 +4,10 @@ class MainController < ApplicationController
 	end
 
 	def login
-		session[:user_id] = params[:user_id]
+		unless params[:user_id].nil?
+			session[:user_id] = params[:user_id]
+		end
+			session[:user_id] = 0
 	end
 
 	def dashboard
