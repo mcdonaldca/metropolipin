@@ -4,9 +4,10 @@ class MainController < ApplicationController
 	end
 
 	def login
-		unless params["test"].nil?
-			session[:val] = params["test"]
-		end
+
+	end
+
+	def dashboard
 	end
 
 end
