@@ -72,6 +72,16 @@
         'Thanks for logging in, ' + response.last_name + '!';
     });
   }
+
+  function logout() {
+    FB.logout(function(response) {
+      statusChangeCallback(response);
+    });
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  };
+  
 </script>
 
 <!--
@@ -84,6 +94,9 @@
 <fb:login-button size="xlarge" style="margin-left:7em;" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
 log in
 </fb:login-button>
+<button onclick="logout();">
+log out
+</button>
 <div id="status">
 </div>
 
