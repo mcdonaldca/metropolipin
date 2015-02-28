@@ -21,14 +21,16 @@
           },
           success: function() {
             console.log("woo");
+            window.location.replace("<%= dashboard_url %>");
           },
           fail: function() {
             console.log("nope");
+            document.getElementById('status').innerHTML = 'Login failed. Please retry.';
           }//,
           //dataType: dataType
         });
       });
-      window.location.replace("<%= dashboard_url %>");
+      
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into metropolipin.';

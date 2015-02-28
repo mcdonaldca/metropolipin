@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'main#index'
+  root 'main#index', :as => "index"
   post 'login' => 'main#login', :as => "login"
   get 'dashboard' => 'main#dashboard', :as => "dashboard"
 

@@ -41,7 +41,7 @@ class MainController < ApplicationController
 	end
 
 	def logout
-		session[:user] = nil
+		session = nil
 		redirect_to root_url
 	end
 
@@ -49,7 +49,7 @@ class MainController < ApplicationController
 
 	def authenticate
 		if session[:user].nil?
-			redirect_to root_url
+			redirect_to index_url
 		end
 	end
 
