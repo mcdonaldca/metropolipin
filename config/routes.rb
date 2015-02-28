@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'blink' => "main#blink", :as => "blink"
   get 'logout' => "main#logout", :as => "logout"
 
+  post 'explore' => "main#explore", :as => "explore"
+  get 'explore' => "main#explore", :as => "explore_get"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

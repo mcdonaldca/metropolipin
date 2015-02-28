@@ -31,6 +31,9 @@ class MainController < ApplicationController
 		@user = User.find session[:user]
 	end
 
+	def explore
+	end
+
 	def blink
 
 		if session[:blink].nil?
@@ -57,7 +60,6 @@ class MainController < ApplicationController
 			redirect_to index_url
 		end
 	end
-
 
 
 end
