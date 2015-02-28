@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'login' => 'main#login', :as => "login"
   get 'dashboard' => 'main#dashboard', :as => "dashboard"
 
+  get 'blink' => "main#blink", :as => "blink"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
