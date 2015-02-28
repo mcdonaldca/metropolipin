@@ -4,7 +4,7 @@
   <title>Metropolipin</title>
   <link href='https://fonts.googleapis.com/css?family=Pontano+Sans|Righteous' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  
   <%= favicon_link_tag 'logo.png' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
@@ -26,11 +26,20 @@
 			<%= image_tag 'menu.png' %>
 		</div>
 	</header>
+	<nav>
+		<ul id="nav-list">
+			<li><a href="">explore pins</a></li>
+			<li><a href="">current trip</a></li>
+			<li><%= link_to "logout", logout_url %></li>
+		</ul>
+	</nav>
+	
 
 	<%= yield %>
 
 	<footer>
 	</footer>
+	<%= javascript_include_tag 'application' %>
 
 </body>
 </html>

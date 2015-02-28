@@ -26,3 +26,10 @@ chicago.city = "Chicago"
 chicago.state = "Illinois"
 chicago.country = "United State"
 chicago.save()
+
+
+caitlin = User.new
+caitlin.fb_id = "10205425176300298"
+caitlin.first = "Caitlin"
+caitlin.last = "McDonald"
+caitlin.save()

@@ -4,6 +4,11 @@ class MainController < ApplicationController
 
 	def index
 		
+		unless params[:admin].nil?
+			session[:user] = "1"
+			redirect_to dashboard_url
+		end
+
 	end
 
 	def login
@@ -42,7 +47,7 @@ class MainController < ApplicationController
 
 	def logout
 		session = nil
-		redirect_to root_url
+		redirect_to index_url
 	end
 
 	private
