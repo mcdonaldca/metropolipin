@@ -25,7 +25,7 @@ class MainController < ApplicationController
 	def dashboard
 		#user = User.find session[:user]
 		#@display = user.fb_id
-		@display = "hi"
+		@display = session[:user]
 	end
 
 	def blink
