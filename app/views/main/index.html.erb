@@ -14,7 +14,7 @@
         $.ajax({
           type: "POST",
           url: "<%= login_url %>",
-          data: {user_id: user.last_name},
+          data: {user_id: user.id},
           success: function() {
             console.log("woo");
           },
