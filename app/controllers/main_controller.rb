@@ -3,9 +3,7 @@ class MainController < ApplicationController
 	before_filter :authenticate, :except => [:index]
 
 	def index
-		unless session[:user].nil?
-			redirect_to dashboard_url
-		end
+		
 	end
 
 	def login
