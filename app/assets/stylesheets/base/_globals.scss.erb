@@ -1,0 +1,77 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+html {
+	background: #ddd;
+}
+
+body {
+	max-width: 500px;
+	margin: 0 auto;
+	background: $cream;
+}
+
+header {
+	position: relative;
+	text-align: center;
+	height: 2em;
+	background: $dark-orange;
+	font: 1em $righteous-stack;
+	padding: .15em 0 0 .25em;
+	color: $cream;
+	text-shadow: .05em .05em darken($cream, 60%);
+
+	#title {
+		font-size: 1.1em;
+		position: absolute;
+		top: .25em;
+		left: .35em;
+
+		.highlight {
+			color: $yellow;
+			text-shadow: .05em .05em darken($yellow, 60%);
+		}
+	}
+
+	#logo-bg {
+		display: inline-block;
+		height: 4em;
+		width: 4em;
+		background: $dark-orange;
+		@include border-radius(50%);
+
+		#logo {
+			padding-top: .5em;
+			height: 3em;
+			width: 3em;
+			margin: 0 auto;
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	#menu {
+		position: absolute;
+		right: .35em;
+		top: .25em;
+
+		height: 1.5em;
+		width: 1.5em;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+}

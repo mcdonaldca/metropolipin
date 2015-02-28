@@ -2,16 +2,35 @@
 <html>
 <head>
   <title>Metropolipin</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Pontano+Sans|Righteous' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= favicon_link_tag 'logo.png' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
   <%= favicon_link_tag 'app_icon.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
 </head>
 <body>
+	<header>
+		<div id="title">
+			metropoli<span class="highlight">pin</span>
+		</div>
+		<div id="logo-bg">
+			<div id="logo">
+				<%= link_to root_url do %>
+					<%= image_tag 'logo.png' %>
+				<% end %>
+			</div>
+		</div>
+		<div id="menu">
+			<%= image_tag 'menu.png' %>
+		</div>
+	</header>
 
-<%= yield %>
+	<%= yield %>
+
+	<footer>
+	</footer>
 
 </body>
 </html>
