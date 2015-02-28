@@ -10,17 +10,19 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      $.ajax({
-        type: "POST",
-        url: "<%= login_url %>",
-        data: {user_id: response.userID},
-        success: function() {
-          console.log("woo");
-        },
-        fail: function() {
-          console.log("nope");
-        }//,
-        //dataType: dataType
+      FB.api('/me', function(user) {
+        $.ajax({
+          type: "POST",
+          url: "<%= login_url %>",
+          data: {user_id: user.id},
+          success: function() {
+            console.log("woo");
+          },
+          fail: function() {
+            console.log("nope");
+          }//,
+          //dataType: dataType
+        });
       });
       //window.location.replace("<%= dashboard_url %>");
     } else if (response.status === 'not_authorized') {
