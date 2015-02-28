@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'main#index'
   post 'login' => 'main#login', :as => "login"
+  get 'login' => 'main#login', :as => "login_g"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

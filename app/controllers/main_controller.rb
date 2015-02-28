@@ -4,7 +4,9 @@ class MainController < ApplicationController
 	end
 
 	def login
-		@val = params
+		unless params["test"].nil?
+			session[:val] = params["test"]
+		end
 	end
 
 end
