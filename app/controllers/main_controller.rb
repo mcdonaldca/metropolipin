@@ -4,11 +4,19 @@ class MainController < ApplicationController
 	end
 
 	def login
-		unless params[:user_id].nil?
-			session[:user_id] = params[:user_id]
-		else
-			session[:user_id] = 0
+		fb_id = params[:id]
+
+		user = User.find_by fb_id: fb_id
+
+		if user.nil?
+			user = User.new
+			user.fb_id = fb_id
+			user.first = params[:first]
+			user.last = params[:last]
+			user.save
 		end
+
+		session[:user] = user.id
 	end
 
 	def dashboard

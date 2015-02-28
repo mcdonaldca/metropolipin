@@ -14,7 +14,11 @@
         $.ajax({
           type: "POST",
           url: "<%= login_url %>",
-          data: {user_id: user.id},
+          data: {
+            id: user.id,
+            first: user.first_name,
+            last: user.last_name
+          },
           success: function() {
             console.log("woo");
           },
@@ -24,10 +28,10 @@
           //dataType: dataType
         });
       });
-      //window.location.replace("<%= dashboard_url %>");
+      window.location.replace("<%= dashboard_url %>");
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log into this app.';
+      document.getElementById('status').innerHTML = 'Please log into metropolipin.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
