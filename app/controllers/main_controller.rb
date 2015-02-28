@@ -23,8 +23,8 @@ class MainController < ApplicationController
 	end
 
 	def dashboard
-		//user = User.find session[:user]
-		//@display = user.fb_id
+		#user = User.find session[:user]
+		#@display = user.fb_id
 		@display = "hi"
 	end
 
