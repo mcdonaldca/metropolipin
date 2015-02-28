@@ -9,9 +9,9 @@
 
 barcelona = City.new
 barcelona.city = "Barcelona"
-barecelona.state = nil
-barecelona.country = "Spain"
-barecelona.save()
+barcelona.state = nil
+barcelona.country = "Spain"
+barcelona.save()
 
 new_york_city = City.new
 new_york_city.city = "New York City"
