@@ -43,7 +43,7 @@ class MainController < ApplicationController
 	end
 
 	def logout
-		session = nil
+		session[:user] = nil
 		redirect_to root_url
 	end
 
