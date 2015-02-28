@@ -9,7 +9,19 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      //testAPI();
+      $.ajax({
+        type: "POST",
+        url: "<%= login_url %>",
+        data: {test: "hi"},
+        success: function() {
+          console.log("woo");
+        },
+        fail: function() {
+          console.log("nope");
+        }//,
+        //dataType: dataType
+      });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log into this app.';
