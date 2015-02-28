@@ -85,9 +85,16 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<h1 id="root">log in with facebook</h1>
+<fb:login-button size="xlarge" style="margin:1em 0 0 7em;" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
+log in
 </fb:login-button>
 
 <div id="status">
-
 </div>
+
+<script>
+$(window).bind("load", function() {
+  $("body").addClass("map");
+});
+</script>
