@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'main#dashboard', :as => "dashboard"
 
   get 'blink' => "main#blink", :as => "blink"
-  get 'reset' => "main#reset", :as => "reset"
+  get 'logout' => "main#logout", :as => "logout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
