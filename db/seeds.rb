@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 City.delete_all
+User.delete_all
+session = nil
 
 barcelona = City.new
 barcelona.city = "Barcelona"
