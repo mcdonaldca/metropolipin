@@ -4,7 +4,7 @@ class MainController < ApplicationController
 	end
 
 	def login
-
+		session[:user_id] = params[:user_id]
 	end
 
 	def dashboard
