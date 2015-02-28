@@ -32,6 +32,7 @@ class MainController < ApplicationController
 	end
 
 	def explore
+		@city = "barcelona"
 	end
 
 	def blink

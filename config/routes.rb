@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post 'explore' => "main#explore", :as => "explore"
   get 'explore' => "main#explore", :as => "explore_get"
+  post 'pindex' => "main#pindex", :as => "pindex"
+  get 'pindex' => "main#pindex", :as => "pindex_get"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
