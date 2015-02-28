@@ -40,4 +40,9 @@ class MainController < ApplicationController
 		render json: @blink
 	end
 
+	def logout
+		session = nil
+		redirect_to root_url
+	end
+
 end
