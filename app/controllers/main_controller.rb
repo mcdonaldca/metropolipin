@@ -1,6 +1,9 @@
 class MainController < ApplicationController
 
 	def index
+		unless session[:user].nil?
+			redirect_to dashboard_url
+		end
 	end
 
 	def login
@@ -20,6 +23,8 @@ class MainController < ApplicationController
 	end
 
 	def dashboard
+		user = User.find session[:user]
+		@display = user.fb_id
 	end
 
 	def blink
