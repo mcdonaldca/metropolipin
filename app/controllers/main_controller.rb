@@ -32,7 +32,11 @@ class MainController < ApplicationController
 	end
 
 	def explore
-		@city = "barcelona"
+		if params[:city].nil? or params[:city] == ''
+			@city = "barcelona"
+		else
+			@city = params[:city].downcase
+		end
 	end
 
 	def blink

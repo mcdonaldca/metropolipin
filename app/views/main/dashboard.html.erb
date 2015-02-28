@@ -1,4 +1,6 @@
-<h1>dashboard</h1>
-<p><%= @user.fb_id %></p>
 
-<%= link_to "Barcelona", explore_get_url %>
+<div class="city-form">
+	<%= form_tag explore_url, method: "post" do %>
+	  <%= text_field_tag :city, '', :placeholder => "Enter a city...", :class => "city" %><%= submit_tag ">>" %>
+	<% end %>
+</div>

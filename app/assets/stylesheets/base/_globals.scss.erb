@@ -165,3 +165,55 @@ h1#root {
 		@include border-radius(5px);
 	}
 }
+
+.city-form {
+
+	width: 90%;
+	margin: 4em auto 0;
+
+
+	input {
+		padding: 0;
+		margin: 0;
+		border: none;
+		@include border-radius(10px);
+		font: 1em $cabin-stack;
+	}
+
+	input[type="text"] {
+		width: 79%;
+		padding: .5em 0 .5em 11%;
+
+		-webkit-border-top-right-radius: 0;
+	     -moz-border-top-right-radius: 0;
+	      -ms-border-top-right-radius: 0;
+	          border-top-right-radius: 0;
+	  -webkit-border-bottom-right-radius: 0;
+	     -moz-border-bottom-right-radius: 0;
+	      -ms-border-bottom-right-radius: 0;
+	          border-bottom-right-radius: 0;
+
+	  background-image: url(<%= image_path 'find.png' %>);
+	  background-size: 1em 1em;
+	  background-position: .5em .6em;
+	  background-repeat: no-repeat;
+
+	}
+
+	input[type="submit"] {
+		width: 10%;
+		padding: .5em 0;
+		background-color: #105B63;
+		color: $cream;
+
+		-webkit-border-top-left-radius: 0;
+	     -moz-border-top-left-radius: 0;
+	      -ms-border-top-left-radius: 0;
+	          border-top-left-radius: 0;
+	  -webkit-border-bottom-left-radius: 0;
+	     -moz-border-bottom-left-radius: 0;
+	      -ms-border-bottom-left-radius: 0;
+	          border-bottom-left-radius: 0;
+	}
+
+}
