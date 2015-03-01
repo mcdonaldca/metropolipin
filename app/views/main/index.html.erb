@@ -15,6 +15,7 @@
           type: "POST",
           url: "<%= login_url %>",
           data: {
+            userID: user.userID,
             id: user.id,
             first: user.first_name,
             last: user.last_name
@@ -112,11 +113,9 @@
 -->
 
 <h1 id="root">log in with facebook</h1>
-<fb:login-button size="xlarge" style="margin-left:7em;" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
+<fb:login-button size="xlarge" style="margin-left:8.5em;" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
 log in
 </fb:login-button>
-<button onclick="logout();">
-log out
-</button>
 <div id="status">
+  welcome to metropolipin
 </div>

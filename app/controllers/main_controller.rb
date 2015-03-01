@@ -29,6 +29,7 @@ class MainController < ApplicationController
 	end
 
 	def dashboard
+		@display = params[:userID]
 		@user = User.find session[:user]
 	end
 

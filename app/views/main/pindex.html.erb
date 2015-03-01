@@ -1,6 +1,80 @@
+<script>
+
+	function friendPic(fb_id, element_id) {
+    FB.api('/' + fb_id + '/picture', function(response) {
+      //document.getElementById(element_id).style.backgroundImage = "url(" + response.url + ")";
+      alert(response.url);
+      var el = $(element_id).css("background-image", "url(" + "//graph.facebook.com/" + fb_id + "/picture" + ")");
+    });
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '731875390260498',
+      cookie     : true,  // enable cookies to allow the server to access the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.2' // use version 2.2
+    });
+
+    <% @city.pins.each do |pin| %>
+    	<% if pin.ratings.count == 1 %>
+    		<% pin.ratings.each do |rating| %>
+    			friendPic("<%= rating.user.fb_id %>", "#friend<%= pin.id %>");
+    			<% end %>
+    	<% end %>
+    <% end %>
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  
+  
+</script>
+
 <div class="options">
 	<div class="backwards">
 		<%= link_to "<< map", explore_url(city: session[:search]), method: :post %>
-
 	</div>
 </div>
+
+<div class="pin-details">
+	<% @city.pins.each do |pin| %>
+		<div class="pin" id="pin<%= pin.id %>">
+			<div class="row row1">
+				<div class="circle pushpin">
+				</div>
+				<h2><%= pin.title %></h2>
+			</div>
+			<div class="row row2">
+				<% if pin.ratings.count == 1 %>
+					<% pin.ratings.each do |rating| %>
+						<div class="circle friend" id="friend<%= pin.id %>">
+						</div>
+					<% end %>
+				<% else %>
+					<div class="circle friends">
+						<%= pin.ratings.count %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<script>
+$(".pin .row1").click(function() {
+	var id = $(this).parent().attr("id");
+	$("#" + id).toggleClass("selected");
+	$(this).children().toggleClass("selected");
+	$(this).next().children().toggleClass("selected");
+});
+</script>
