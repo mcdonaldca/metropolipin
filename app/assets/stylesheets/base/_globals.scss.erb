@@ -117,7 +117,7 @@ nav {
 }
 
 h1#root {
-	margin: 2em 0 .75em;
+	margin: 1.5em 0 .75em;
 	text-align: center;
 	font: 2em $cabin-stack;
 	color: $dark-orange;
@@ -265,7 +265,6 @@ h2 {
 
 		.row1 {
 			padding: .5em 0 .25em 0;
-			cursor: pointer;
 
 			.pushpin {
 				background-image: url(<%= image_path 'pin_dark.png' %>);
@@ -339,6 +338,10 @@ h2 {
 			&.selected {
 				color: $blu;
 			}
+
+			&.plan {
+				left: 2.50em;
+			}
 		}
 
 		&.selected {
@@ -393,6 +396,27 @@ button, .pin-form input[type="submit"] {
 
 	text-align: center;
 }
+
+.time {
+	width: 3em;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+
+	.stop-time {
+		width: 3em;
+		text-align: center;
+		@include border-radius(10px);
+		border: none;
+		padding: .5em .75em;
+
+		position: relative;
+		top: -1.25em;
+		left: -.75em;
+	}
+}
+
+
 
 .wrapper {
 	min-height: 100%;

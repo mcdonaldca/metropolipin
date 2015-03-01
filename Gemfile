@@ -25,6 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'yelp', require: 'yelp'
 
+# Use Rufus Scheduler for cron jobs
+gem 'rufus-scheduler', '3.0.9'
+
+gem 'twilio-ruby'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

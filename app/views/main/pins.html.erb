@@ -1,0 +1,9 @@
+<div class="options">
+	<div class="backwards">
+		<%= link_to "<< map", explore_url(city: session[:search]), method: :post %>
+	</div>
+</div>
+
+<h1>your pins</h1>
+
+<%= @trip.city_id %>

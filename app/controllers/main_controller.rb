@@ -142,6 +142,7 @@ class MainController < ApplicationController
 				stop.longitude = pin.longitude
 				stop.rating = nil
 				stop.pin_id = pin.id
+				stop.pin_type = "Pin"
 				stop.time = nil
 				stop.trip_id = pintrip.id
 				stop.save()
@@ -159,6 +160,7 @@ class MainController < ApplicationController
 				stop.longitude = yelp_pin.longitude
 				stop.rating = nil
 				stop.pin_id = yelp_pin.id
+				stop.pin_type = "YelpPin"
 				stop.time = nil
 				stop.trip_id = pintrip.id
 				stop.save()
@@ -173,6 +175,40 @@ class MainController < ApplicationController
 	end
 
 	def finalize_trip
+		require 'rubygems'          # This line not needed for ruby > 1.8
+		require 'twilio-ruby'
+
+		@trip = Trip.find session[:trip]
+
+		current_time = Time.now
+
+		@trip.stops.each do |stop|
+			time = params["stop" + stop.id.to_s + "-time"]
+			stop.time = time
+			stop.save()
+
+			notification_time = stop.time.strftime("%Y/%m/%d %H:%M:00")
+
+			Rufus::Scheduler.singleton.at notification_time do
+				Rails.logger.info notification_time + ">> Hey! It's " + stop.time.strftime("%I:%M %p") + ", time to go to " + stop.title
+				 
+				# Get your Account Sid and Auth Token from twilio.com/user/account
+				account_sid = 'AC77847336a48c6aa58c4f1c0e7cbf67ae' 
+				auth_token = '846b1a6d20f408b88b3a4d78a8604431' 
+				@client = Twilio::REST::Client.new account_sid, auth_token
+				 
+				message = @client.account.messages.create(:body => "Hey! It's " + stop.time.strftime("%I:%M %p") + ", time to go to " + stop.title,
+				    :to => '+19894883855', 
+						:from => '+19899410565')
+			end
+
+		end
+
+		redirect_to pins_url
+	end
+
+	def pins
+		@trip = Trip.find session[:trip]
 	end
 
 	def pinmap

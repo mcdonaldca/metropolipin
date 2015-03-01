@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pintrip' => "main#pintrip", :as => "pintrip"
   get 'pinmap' => "main#pinmap", :as => "pinmap"
   post 'finalize_trip' => "main#finalize_trip", :as => "finalize_trip"
+  get 'pins' => "main#pins", :as => "pins"
 
   get 'recording' => "main#recording", :as => "recording"
 

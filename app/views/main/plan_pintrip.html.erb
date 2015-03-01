@@ -1,12 +1,74 @@
 
-<%= form_tag finalize_trip_url, method: "post", :class => "pin-form" do %>
+<h1 id="root">plan your itinerary</h1>
 
+<%= form_tag finalize_trip_url, method: :post, :class => "pin-form" do %>
+
+<div class="pin-details">
 	<% @stops.each do |stop| %>
-		<p><%= stop.title %></p>
+		<div class="pin" id="pin<%= stop.id %>" data-id="<%= stop.id %>">
+			
+			<div class="row row1">
+				<div class="time">
+					<input type="text" class="stop-time" id="stop<%= stop.id %>-time" name="stop<%= stop.id %>-time" placeholder="0:00">
+				</div>
+				<h2><%= stop.title %></h2>
+			</div>
+
+	  <% if stop.pin_type == "Pin" %>
+	  	<% @pin = Pin.find stop.pin_id %>
+		  	<div class="row row2">
+					<% if @pin.ratings.count == 1 %>
+						<% @pin.ratings.each do |rating| %>
+							<div class="circle friend" id="friend<%= @pin.id %>" style="background-image:url(<%= rating.user.profile_picture %>);background-size:2em 2em;">
+							</div>
+							<h3 class="plan"><%= rating.user.first %> <%= rating.user.last[0].upcase %></h3>
+						<% end %>
+					<% else %>
+						<div class="circle friends">
+							<%= @pin.ratings.count %>
+						</div>
+						<h3 style="top:.05em;" class="plan"><%= @pin.ratings.count %> friends have been here</h3>
+					<% end %>
+				</div>
+			</div>
+			<% if @pin.ratings.count != 1 %>
+				<div class="row3" id="people<%= stop.id %>">
+				<% @pin.ratings.each do |rating| %>
+					<div class="item">
+						<div class="circle friend" id="friend<%= stop.id %>" style="background-image:url(<%= rating.user.profile_picture %>);background-size:2em 2em;">
+						</div>
+						<h3 class="plan"><%= rating.user.first %> <%= rating.user.last[0].upcase %></h3>
+					</div>
+				<% end %>
+				</div>
+			<% end %>
+	  <% else %>
+	  	<% @pin = YelpPin.find stop.pin_id %>
+	  	<div class="row row2">
+				<div class="circle yelp">
+				</div>
+				<h3 class="plan">recommended by Yelp</h3>
+			</div>
+		</div>
+	  <% end %>
+
+		
+			
 	<% end %>
+</div>
 
-
-	<div class="plan-pintrip">
-		<%= submit_tag "let's go" %>
-	</div>
+<div class="plan-pintrip">
+	<%= submit_tag "let's go" %>
+</div>
 <% end %>
+
+<script>
+$(".pin .row2").click(function() {
+	var id = $(this).parent().attr("data-id");
+	var next = $(this).parent().next();
+	if (next.hasClass("row3")) {
+		next.toggle();
+		$(this).children().toggleClass("up");
+	}
+});
+</script>
