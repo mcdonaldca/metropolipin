@@ -19,18 +19,27 @@ barcelona = City.new
 barcelona.city = "barcelona"
 barcelona.state = nil
 barcelona.country = "spain"
+barcelona.latitude = "41.39479"
+barcelona.longitude = "2.1487679"
+barcelona.zoom = "12"
 barcelona.save()
 
 new_york_city = City.new
 new_york_city.city = "new york city"
 new_york_city.state = "new york"
 new_york_city.country = "united states"
+new_york_city.latitude = "40.7033127"
+new_york_city.longitude = "-73.979681"
+new_york_city.zoom = "10"
 new_york_city.save()
 
 chicago = City.new
 chicago.city = "chicago"
 chicago.state = "illinois"
 chicago.country = "united states"
+chicago.latitude = "41.8337329"
+chicago.longitude = "-87.7321555"
+chicago.zoom = "11"
 chicago.save()
 
 # Users
