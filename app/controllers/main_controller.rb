@@ -34,13 +34,20 @@ class MainController < ApplicationController
 
 	def explore
 		if params[:city].nil? or params[:city] == ''
-			session[:search] = "new york city"
+			redirect_to dashboard_url
 		else
 			session[:search] = params[:city].downcase
 		end
 
 		@city = City.find_by city: session[:search]
+	end
 
+	def pindex
+		if session[:search].nil? or session[:search] == ''
+			redirect_to dashboard_url
+		end
+
+		@city = City.find_by city: session[:search]
 	end
 
 	def blink
