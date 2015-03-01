@@ -34,10 +34,13 @@ class MainController < ApplicationController
 
 	def explore
 		if params[:city].nil? or params[:city] == ''
-			sessions[:search] = "barcelona"
+			session[:search] = "new york city"
 		else
-			sessions[:search] = params[:city].downcase
+			session[:search] = params[:city].downcase
 		end
+
+		@city = City.find_by city: session[:search]
+
 	end
 
 	def blink

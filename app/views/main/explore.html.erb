@@ -1,7 +1,11 @@
 <div class="options">
 	<div class="backwards">
-		<%= link_to "<< " + sessions[:search], dashboard_url %>
+		<%= link_to "<< " + session[:search], dashboard_url %>
 	</div><div class="forwards">
 		<%= link_to "pindex >>", pindex_get_url %>
 	</div>
 </div>
+
+<% @city.pins.each do |pin| %>
+	<p><%= pin.latitude %></p>
+<% end %>

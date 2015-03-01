@@ -16,21 +16,21 @@ Rating.delete_all
 # Cities
 
 barcelona = City.new
-barcelona.city = "Barcelona"
+barcelona.city = "barcelona"
 barcelona.state = nil
-barcelona.country = "Spain"
+barcelona.country = "spain"
 barcelona.save()
 
 new_york_city = City.new
-new_york_city.city = "New York City"
-new_york_city.state = "New York"
-new_york_city.country = "United State"
+new_york_city.city = "new york city"
+new_york_city.state = "new york"
+new_york_city.country = "united states"
 new_york_city.save()
 
 chicago = City.new
-chicago.city = "Chicago"
-chicago.state = "Illinois"
-chicago.country = "United State"
+chicago.city = "chicago"
+chicago.state = "illinois"
+chicago.country = "united states"
 chicago.save()
 
 # Users
