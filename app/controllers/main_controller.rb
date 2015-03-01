@@ -229,10 +229,12 @@ class MainController < ApplicationController
 	end
 
 	def blink
-		trip = Trip.find session[:trip]
+		trip = Trip.find_by completed: 0
+		user = User.find_by first: "Caitlin"
+
 		rating = Rating.new
-		rating.user_id = session[:user]
-		rating.trip_id = session[:trip]
+		rating.user_id = user.id
+		rating.trip_id = trip.id
 		rating.score = nil
 
 		latx = params[:lat].to_i / 10000000.0
@@ -268,16 +270,7 @@ class MainController < ApplicationController
 		rating.pin_id = pin.id
 		rating.save()
 
-		require "json"
-		my_hash = {
-			:SUCCESS => 1, 
-			:LAT => params[:lat], 
-			:LONG => params[:long],
-			:LATX => latx,
-			:LONGX => longx
-		}
-		@blink = JSON.generate(my_hash)
-		render json: @blink
+		
 	end
 
 	def login
