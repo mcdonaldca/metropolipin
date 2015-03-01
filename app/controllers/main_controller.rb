@@ -260,9 +260,9 @@ class MainController < ApplicationController
 
 		lat = item["geometry"]["location"]["lat"]
 		lng = item["geometry"]["location"]["lng"]
-		title = item["name"]
+		title = item["name"].downcase
 
-		pin = Pin.find_by title: title.downcase
+		pin = Pin.find_by title: title
 
 		if pin.nil?
 			pin = Pin.new
@@ -279,8 +279,7 @@ class MainController < ApplicationController
 		require "json"
 		my_hash = {:SUCCESS => 1,
 			:LAT => lat,
-		  :LNG => lng,
-		  :URL => base_url
+		  :LNG => lng
 		}
 		@blink = JSON.generate(my_hash)
 		render json: @blink
