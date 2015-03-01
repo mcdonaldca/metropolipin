@@ -6,10 +6,6 @@
 	</div>
 </div>
 
-<% @city.pins.each do |pin| %>
-	<p><%= pin.latitude %></p>
-<% end %>
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <div id="map-canvas"></div>
 <script>
@@ -24,12 +20,12 @@
 		var styles = [
 		  {
 		    "stylers": [
-		      { "hue": "#3F5666" }
+		      { "saturation": "-100" }
 		    ]
 		  }
 		]
 		var mapOptions = {
-			zoom:15,
+			zoom: <%= @city.zoom %>,
 			center: latLng,
 			styles: styles
 		};
@@ -39,5 +35,5 @@
 	  	//var marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(latitude, longitude), icon: image });
 	}
   	//initialize(41.414495, 2.152694);
-  	initialize(<%= @city.pins.first.latitude %>, <%= @city.pins.first.longitude %>);
+  	initialize(<%= @city.latitude %>, <%= @city.longitude %>);
 </script>
