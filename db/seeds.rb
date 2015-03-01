@@ -98,6 +98,13 @@ cheese_bar.longitude = "-74.00322"
 cheese_bar.city_id = new_york_city.id
 cheese_bar.save()
 
+penn_station = Pin.new
+penn_station.title = "penn_station"
+penn_station.latitude = "40.75058"
+penn_station.longitude = "-73.99358"
+penn_station.city_id = new_york_city.id
+penn_station.save()
+
 # Trips
 
 bogdan_trip = Trip.new
@@ -161,3 +168,10 @@ l_cheese_bar.user_id = lauren.id
 l_cheese_bar.score = 5
 l_statue_of_liberty.trip_id = lauren_trip.id
 l_cheese_bar.save()
+
+e_penn_station = Rating.new
+e_penn_station.pin_id = penn_station.id
+e_penn_station.user_id = erin.id
+e_penn_station.score = 2
+e_penn_station.trip_id = erin_trip.id
+e_penn_station.save()

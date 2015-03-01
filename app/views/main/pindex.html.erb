@@ -23,6 +23,38 @@
 						<div class="circle friend" id="friend<%= pin.id %>" style="background-image:url(<%= rating.user.profile_picture %>);background-size:2em 2em;">
 						</div>
 						<h3><%= rating.user.first.downcase %> <%= rating.user.last[0].downcase %></h3>
+						<div class='friends-rating'>
+							<% if rating.score.nil? %>
+								<%= image_tag "1.png", :class => "emoji nil" %>
+							<% else %>
+								<%= image_tag "1.png", :class => "emoji" %>
+							<% end %>
+							
+							<% if rating.score.nil? or rating.score < 2 %>
+								<%= image_tag "2.png", :class => "emoji nil" %>
+							<% else %>
+								<%= image_tag "2.png", :class => "emoji" %>
+							<% end %>
+						
+						
+							<% if rating.score.nil? or rating.score < 3 %>
+								<%= image_tag "3.png", :class => "emoji nil" %>
+							<% else %>
+								<%= image_tag "3.png", :class => "emoji" %>
+							<% end %>
+						
+							<% if rating.score.nil? or rating.score < 4 %>
+								<%= image_tag "4.png", :class => "emoji nil" %>
+							<% else %>
+								<%= image_tag "4.png", :class => "emoji" %>
+							<% end %>
+						
+							<% if rating.score.nil? or rating.score < 5 %>
+								<%= image_tag "5.png", :class => "emoji nil" %>
+							<% else %>
+								<%= image_tag "5.png", :class => "emoji" %>
+							<% end %>
+						</div>
 					<% end %>
 				<% else %>
 					<div class="circle friends">
@@ -39,6 +71,38 @@
 					<div class="circle friend" id="friend<%= pin.id %>" style="background-image:url(<%= rating.user.profile_picture %>);background-size:2em 2em;">
 					</div>
 					<h3><%= rating.user.first %> <%= rating.user.last[0].upcase %></h3>
+					<div class='friends-rating'>
+						<% if rating.score.nil? %>
+							<%= image_tag "1.png", :class => "emoji nil" %>
+						<% else %>
+							<%= image_tag "1.png", :class => "emoji" %>
+						<% end %>
+						
+						<% if rating.score.nil? or rating.score < 2 %>
+							<%= image_tag "2.png", :class => "emoji nil" %>
+						<% else %>
+							<%= image_tag "2.png", :class => "emoji" %>
+						<% end %>
+					
+					
+						<% if rating.score.nil? or rating.score < 3 %>
+							<%= image_tag "3.png", :class => "emoji nil" %>
+						<% else %>
+							<%= image_tag "3.png", :class => "emoji" %>
+						<% end %>
+					
+						<% if rating.score.nil? or rating.score < 4 %>
+							<%= image_tag "4.png", :class => "emoji nil" %>
+						<% else %>
+							<%= image_tag "4.png", :class => "emoji" %>
+						<% end %>
+					
+						<% if rating.score.nil? or rating.score < 5 %>
+							<%= image_tag "5.png", :class => "emoji nil" %>
+						<% else %>
+							<%= image_tag "5.png", :class => "emoji" %>
+						<% end %>
+					</div>
 				</div>
 			<% end %>
 			</div>
@@ -62,6 +126,37 @@
 				<div class="circle yelp">
 				</div>
 				<h3>recommended by Yelp</h3>
+				<div class='friends-rating'>
+					<% if yelp_pin.rating.nil? %>
+						<%= image_tag "1.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "1.png", :class => "emoji" %>
+					<% end %>
+					
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 2 %>
+						<%= image_tag "2.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "2.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 3 %>
+						<%= image_tag "3.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "3.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 4 %>
+						<%= image_tag "4.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "4.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 5 %>
+						<%= image_tag "5.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "5.png", :class => "emoji" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	<% end %>
@@ -81,6 +176,37 @@
 				<div class="circle yelp">
 				</div>
 				<h3>recommended by Yelp</h3>
+				<div class='friends-rating'>
+					<% if yelp_pin.rating.nil? %>
+						<%= image_tag "1.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "1.png", :class => "emoji" %>
+					<% end %>
+					
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 2 %>
+						<%= image_tag "2.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "2.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 3 %>
+						<%= image_tag "3.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "3.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 4 %>
+						<%= image_tag "4.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "4.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 5 %>
+						<%= image_tag "5.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "5.png", :class => "emoji" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	<% end %>
@@ -100,6 +226,37 @@
 				<div class="circle yelp">
 				</div>
 				<h3>recommended by Yelp</h3>
+				<div class='friends-rating'>
+					<% if yelp_pin.rating.nil? %>
+						<%= image_tag "1.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "1.png", :class => "emoji" %>
+					<% end %>
+					
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 2 %>
+						<%= image_tag "2.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "2.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 3 %>
+						<%= image_tag "3.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "3.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 4 %>
+						<%= image_tag "4.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "4.png", :class => "emoji" %>
+					<% end %>
+				
+					<% if yelp_pin.rating.nil? or yelp_pin.rating < 5 %>
+						<%= image_tag "5.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "5.png", :class => "emoji" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	<% end %>

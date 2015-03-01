@@ -250,6 +250,7 @@ h2 {
 		width: 95%;
 		padding-left: 5%;
 		border-bottom: 1px solid $orange;
+		position: relative;
 
 		.row {
 			height: 2em;
@@ -361,6 +362,7 @@ h2 {
 			border-bottom: 1px darken($blu, 5%) solid;
 			padding-top: .25em;
 			padding-left: 5%;
+			position: relative;
 
 			.circle {
 				display: inline-block;
@@ -548,6 +550,28 @@ button, .pin-form input[type="submit"] {
 		}
 	}
 
+}
+
+.friends-rating {
+	display: inline-block;
+	text-align: right;
+	position: absolute;
+	right: 1em;
+	bottom: .5em;
+
+	.emoji {
+		width: 1em;
+		height: 1em;
+		display: inline-block;
+		margin-top: 0 .5em;
+		@include border-radius(50%);
+		border: 2px solid $dark-orange;
+
+		&.nil {
+			-webkit-filter: grayscale(100%); 
+			filter: grayscale(100%);
+		}
+	}
 }
 
 .wrapper {
