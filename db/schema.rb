@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20150228235837) do
   end
 
   create_table "pins", force: :cascade do |t|
+    t.string   "lat"
+    t.string   "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
