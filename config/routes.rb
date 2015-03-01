@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   post 'explore' => "main#explore", :as => "explore"
   get 'explore' => "main#explore", :as => "explore_get"
   get 'pindex' => "main#pindex", :as => "pindex"
-  post 'pintrip' => "main#pintrip", :as => "pintrip"
+  post 'plan_pintrip' => "main#plan_pintrip", :as => "plan_pintrip"
+  get 'pintrip' => "main#pintrip", :as => "pintrip"
+  get 'pinmap' => "main#pinmap", :as => "pinmap"
+  post 'finalize_trip' => "main#finalize_trip", :as => "finalize_trip"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

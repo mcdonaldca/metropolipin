@@ -7,7 +7,7 @@
 
 <h1>pick your stops</h1>
 
-<%= form_tag pintrip_url, method: :post do %>
+<%= form_tag plan_pintrip_url, method: :post, :class => "pin-form" do %>
 <div class="pin-details">
 	<% @city.pins.each do |pin| %>
 		<div class="pin" id="pin<%= pin.id %>" data-id="<%= pin.id %>">
@@ -46,11 +46,7 @@
 	<% end %>
 </div>
 
-<button id="get-yelp">
-	want more pins?
-</button>
-
-<div id="yelp-results" class="pin-details">
+<div id="yelp-results" class="pin-details" style="display:none">
 	<h2>arts &amp; entertainment </h2>
 	<% for i in 0..4 %>
 		<% yelp_pin = @arts_pins[i] %>
@@ -114,6 +110,10 @@
 </div>
 <% end %>
 
+<button id="get-yelp">
+	want more pins?
+</button>
+
 <script>
 $(".pin .row1").click(function() {
 	var id = $(this).parent().attr("data-id");
@@ -135,7 +135,14 @@ $(".pin .row2").click(function() {
 		$(this).children().toggleClass("up");
 	}
 });
+
+$("#get-yelp").click(function() {
+	$(this).html("want fewer pins?");
+	$("#yelp-results").toggle();
+});
+
 </script>
+
 
 
 

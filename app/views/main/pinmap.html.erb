@@ -1,0 +1,50 @@
+<div class="options">
+	<div class="backwards">
+	</div><div class="forwards">
+		<%= link_to "your pintrip >>", pintrip_url %>
+	</div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<div id="map-canvas"></div>
+<script>
+	var latLng;
+
+	/*
+		Render map based on initial and final location
+	*/
+	function initialize(lat, lng) {
+		
+		latLng = new google.maps.LatLng(lat, lng);
+		var styles = [
+		  {
+		    "stylers": [
+		      { "lightness": -25 },
+		      { "saturation": -100 }
+		    ]
+		  },{
+		    "featureType": "water",
+		    "stylers": [
+		      { "lightness": -35 }
+		    ]
+		  }
+		]
+		var mapOptions = {
+			zoom: <%= @city.zoom %>,
+			center: latLng,
+			styles: styles
+		};
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		
+		<% @trip.stops.each do |pin| %>
+			pinLatLng = new google.maps.LatLng(<%= pin.latitude %>, <%= pin.longitude %>);
+			var marker = new google.maps.Marker( {
+				map: map,
+				position: pinLatLng,
+				icon: "<%= asset_path('friend_pin.png') %>"
+			});
+		<% end %>
+	}
+
+  	initialize(<%= @city.latitude %>, <%= @city.longitude %>);
+</script>

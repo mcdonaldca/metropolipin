@@ -1,0 +1,12 @@
+
+<%= form_tag finalize_trip_url, method: "post", :class => "pin-form" do %>
+
+	<% @stops.each do |stop| %>
+		<p><%= stop.title %></p>
+	<% end %>
+
+
+	<div class="plan-pintrip">
+		<%= submit_tag "let's go" %>
+	</div>
+<% end %>

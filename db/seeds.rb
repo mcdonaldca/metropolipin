@@ -11,7 +11,10 @@
 City.delete_all
 User.delete_all
 Pin.delete_all
+YelpPin.delete_all
 Rating.delete_all
+Trip.delete_all
+Stop.delete_all
 
 # Cities
 

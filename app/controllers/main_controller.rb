@@ -118,9 +118,10 @@ class MainController < ApplicationController
 		
 	end
 
-	def pintrip
+	def plan_pintrip
 		@pin_stops = params[:pin_stops]
 		@yelp_stops = params[:yelp_stops]
+		@stops = Array.new
 
 		city = City.find_by city: session[:search].downcase
 
@@ -130,7 +131,55 @@ class MainController < ApplicationController
 		pintrip.completed = 0
 		pintrip.save()
 
+		session[:trip] = pintrip.id
+
+		unless @pin_stops.nil?
+			@pin_stops.each do |pin_stop|
+				pin = Pin.find pin_stop
+				stop = Stop.new
+				stop.title = pin.title
+				stop.latitude = pin.latitude
+				stop.longitude = pin.longitude
+				stop.rating = nil
+				stop.pin_id = pin.id
+				stop.time = nil
+				stop.trip_id = pintrip.id
+				stop.save()
+
+				@stops.push(stop)
+			end
+		end
+
+		unless @yelp_stops.nil?
+			@yelp_stops.each do |yelp_stop|
+				yelp_pin = YelpPin.find yelp_stop
+				stop = Stop.new
+				stop.title = yelp_pin.title
+				stop.latitude = yelp_pin.latitude
+				stop.longitude = yelp_pin.longitude
+				stop.rating = nil
+				stop.pin_id = yelp_pin.id
+				stop.time = nil
+				stop.trip_id = pintrip.id
+				stop.save()
+
+				@stops.push(stop)
+			end
+		end
+
 	end
+
+	def pintrip
+	end
+
+	def finalize_trip
+	end
+
+	def pinmap
+		@trip = Trip.find session[:trip]
+		@city = City.find @trip.city_id
+	end
+
 
 	def blink
 
