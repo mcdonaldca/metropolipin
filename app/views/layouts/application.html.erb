@@ -11,31 +11,35 @@
   <%= favicon_link_tag 'app_icon.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
 </head>
 <body>
-	<header>
-		<div id="title">
-			metropoli<span class="highlight">pin</span>
-		</div>
-		<div id="logo-bg">
-			<div id="logo">
-				<%= link_to index_url do %>
-					<%= image_tag 'logo.png' %>
-				<% end %>
+	<div class="wrapper">
+		<header>
+			<div id="title">
+				metropoli<span class="highlight">pin</span>
 			</div>
-		</div>
-		<div id="menu">
-			<%= image_tag 'menu.png' %>
-		</div>
-	</header>
-	<nav>
-		<ul id="nav-list">
-			<li><%= link_to "explore pins", dashboard_url %></li>
-			<li><a href="">current trip</a></li>
-			<li><%= link_to "logout", logout_url %></li>
-		</ul>
-	</nav>
-	
+			<div id="logo-bg">
+				<div id="logo">
+					<%= link_to index_url do %>
+						<%= image_tag 'logo.png' %>
+					<% end %>
+				</div>
+			</div>
+			<div id="menu">
+				<%= image_tag 'menu.png' %>
+			</div>
+		</header>
+		<nav>
+			<ul id="nav-list">
+				<li><%= link_to "explore pins", dashboard_url %></li>
+				<li><a href="">current trip</a></li>
+				<li><%= link_to "logout", logout_url %></li>
+			</ul>
+		</nav>
+		
 
-	<%= yield %>
+		<%= yield %>
+		<div class="push">
+		</div>
+	</div>
 
 	<footer>
 	</footer>

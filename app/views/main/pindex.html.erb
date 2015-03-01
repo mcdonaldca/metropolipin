@@ -45,6 +45,70 @@
 		<% end %>
 	<% end %>
 </div>
+
+<button id="get-yelp">
+	want more pins?
+</button>
+
+<div id="yelp-results" class="pin-details">
+	<h2>arts &amp; entertainment </h2>
+	<% for i in 0..4 %>
+		<% yelp_pin = @arts_pins[i] %>
+
+		<div class="pin" id="yelppin<%= yelp_pin.id %>" data-id="<%= yelp_pin.id %>">
+			<input type="checkbox" id="checkyelp<%= yelp_pin.id %>" style="display:none" name="yelp_stops[]" value="<%= yelp_pin.id %>">
+			<div class="row row1">
+				<div class="circle pushpin">
+				</div>
+				<h2><%= yelp_pin.title %></h2>
+			</div>
+			<div class="row row2">
+				<div class="circle yelp">
+				</div>
+				<h3>recommended by Yelp</h3>
+			</div>
+		</div>
+	<% end %>
+
+	<h2>food &amp; beverage </h2>
+	<% for i in 0..4 %>
+		<% yelp_pin = @food_pins[i] %>
+
+		<div class="pin" id="yelppin<%= yelp_pin.id %>" data-id="<%= yelp_pin.id %>">
+			<input type="checkbox" id="checkyelp<%= yelp_pin.id %>" style="display:none" name="yelp_stops[]" value="<%= yelp_pin.id %>">
+			<div class="row row1">
+				<div class="circle pushpin">
+				</div>
+				<h2><%= yelp_pin.title %></h2>
+			</div>
+			<div class="row row2">
+				<div class="circle yelp">
+				</div>
+				<h3>recommended by Yelp</h3>
+			</div>
+		</div>
+	<% end %>
+
+	<h2>tours &amp; attractions </h2>
+	<% for i in 0..4 %>
+		<% yelp_pin = @tour_pins[i] %>
+
+		<div class="pin" id="yelppin<%= yelp_pin.id %>" data-id="<%= yelp_pin.id %>">
+			<input type="checkbox" id="checkyelp<%= yelp_pin.id %>" style="display:none" name="yelp_stops[]" value="<%= yelp_pin.id %>">
+			<div class="row row1">
+				<div class="circle pushpin">
+				</div>
+				<h2><%= yelp_pin.title %></h2>
+			</div>
+			<div class="row row2">
+				<div class="circle yelp">
+				</div>
+				<h3>recommended by Yelp</h3>
+			</div>
+		</div>
+	<% end %>
+</div>
+
 <div class="plan-pintrip">
 	<%= submit_tag "plan pintrip" %>
 </div>
@@ -101,57 +165,5 @@ $(".pin .row2").click(function() {
 
 
 
-<h2>arts &amp; entertainment </h2>
-<ol>
-	<% for i in 0..4 %>
-		<% pin = @arts_pins[i] %>
-		<li>
-			<h5>
-				<%= pin["name"] %>
-			</h5>
-			<p>
-				Rating: <%= pin["rating"] %>
-			</p>
-			<p>
-				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
-			</p>
-		</li>	
-	<% end %>
-</ol>
 
-<h2>food &amp; beverage </h2>
-<ol>
-	<% for i in 0..4 %>
-		<% pin = @food_pins[i] %>
-		<li>
-			<h5>
-				<%= pin["name"] %>
-			</h5>
-			<p>
-				Rating: <%= pin["rating"] %>
-			</p>
-			<p>
-				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
-			</p>
-		</li>	
-	<% end %>
-</ol>
-
-<h2>tours &amp; attractions </h2>
-<ol>
-	<% for i in 0..4 %>
-		<% pin = @tour_pins[i] %>
-		<li>
-			<h5>
-				<%= pin["name"] %>
-			</h5>
-			<p>
-				Rating: <%= pin["rating"] %>
-			</p>
-			<p>
-				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
-			</p>
-		</li>	
-	<% end %>
-</ol>
 

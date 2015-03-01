@@ -4,8 +4,8 @@
 }
 
 html, body {
-	height: 100%;
 	width: 100%;
+	height: 100%;
 }
 
 html {
@@ -127,7 +127,7 @@ h1 {
 }
 
 h2 {
-	margin: .2em 0 .35em;
+	margin: 1em 0 1em;
 	text-align: center;
 	font: 1.3em $cabin-stack;
 	color: $blu;
@@ -290,6 +290,16 @@ h2 {
 					background-image: url(<%= image_path 'friends_blue.png' %>);
 				}
 			}
+
+			.yelp {
+				background-image: url(<%= image_path 'yelp_dark.png' %>);
+				background-size: 2em 2em;
+				background-position: 0 0;
+
+				&.selected {
+					background-image: url(<%= image_path 'yelp_blue.png' %>);
+				}
+			}
 		}
 
 		h2 {
@@ -353,4 +363,15 @@ h2 {
 			}
 		}
 	}
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0 auto -5px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.footer, .push {
+	height: 5px; /* .push must be the same height as .footer */
 }
