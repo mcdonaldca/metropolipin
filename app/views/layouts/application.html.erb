@@ -4,7 +4,7 @@
   <title>Metropolipin</title>
   <link href='https://fonts.googleapis.com/css?family=Cabin:400,700|Righteous' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  
+  <%= javascript_include_tag 'application' %>
   <%= favicon_link_tag 'logo.png' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
@@ -39,7 +39,7 @@
 
 	<footer>
 	</footer>
-	<%= javascript_include_tag 'application' %>
 
+	<%= javascript_include_tag 'nav.js' %>
 </body>
 </html>
