@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'main#dashboard', :as => "dashboard"
 
   get 'blink' => "main#blink", :as => "blink"
-  get 'blink/lat/long' => "main#blinkex", :as => "blink"
+  get 'blink/lat/long' => "main#blinkex", :as => "blinkex"
   get 'logout' => "main#logout", :as => "logout"
 
   post 'explore' => "main#explore", :as => "explore"
