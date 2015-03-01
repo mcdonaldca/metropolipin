@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301035223) do
+ActiveRecord::Schema.define(version: 20150301035532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 20150301035223) do
   end
 
   create_table "pins", force: :cascade do |t|
-    t.string   "lat"
-    t.string   "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
@@ -45,6 +43,16 @@ ActiveRecord::Schema.define(version: 20150301035223) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "trip_id"
+  end
+
+  create_table "stops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "time"
+    t.integer  "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trips", force: :cascade do |t|
