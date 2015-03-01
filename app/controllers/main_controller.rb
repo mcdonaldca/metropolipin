@@ -274,12 +274,20 @@ class MainController < ApplicationController
 		end
 
 		rating.pin_id = pin.id
-		rating.save()
+
+		results = Rating.where(pin_id: pin.id, user_id: user.id, trip_id: trip.id)
+
+		if results.count == 0
+			rating.save()
+		end
 
 		require "json"
 		my_hash = {:SUCCESS => 1,
 			:LAT => lat,
-		  :LNG => lng
+		  :LNG => lng,
+		  :pin => pin.id,
+		  :user => user.id,
+		  :trip => trip.id
 		}
 		@blink = JSON.generate(my_hash)
 		render json: @blink
