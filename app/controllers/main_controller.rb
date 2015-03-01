@@ -125,6 +125,12 @@ class MainController < ApplicationController
 
 		city = City.find_by city: session[:search].downcase
 
+		old_trip = Trip.find_by completed: 0
+		unless old_trip.nil?
+			old_trip.completed = 1
+			old_trip.save()
+		end
+
 		pintrip = Trip.new		
 		pintrip.city_id = city.id
 		pintrip.user_id = session[:user]
