@@ -236,7 +236,7 @@ class MainController < ApplicationController
 
 	def blink
 		trip = Trip.find_by completed: 0
-		user = User.find_by first: "Caitlin"
+		user = User.find_by first: "caitlin"
 
 		rating = Rating.new
 		rating.user_id = user.id
@@ -276,7 +276,13 @@ class MainController < ApplicationController
 		rating.pin_id = pin.id
 		rating.save()
 
-		
+		require "json"
+		my_hash = {:SUCCESS => 1,
+			:LAT => lat,
+		  :LNG => lng
+		}
+		@blink = JSON.generate(my_hash)
+		render json: @blink
 	end
 
 	def login
