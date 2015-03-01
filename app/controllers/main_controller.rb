@@ -5,7 +5,8 @@ class MainController < ApplicationController
 	def index
 		
 		unless params[:admin].nil?
-			session[:user] = "1"
+			user = User.find_by first: "Caitlin"
+			session[:user] = user.id
 			redirect_to dashboard_url
 		end
 
@@ -33,9 +34,9 @@ class MainController < ApplicationController
 
 	def explore
 		if params[:city].nil? or params[:city] == ''
-			@city = "barcelona"
+			sessions[:search] = "barcelona"
 		else
-			@city = params[:city].downcase
+			sessions[:search] = params[:city].downcase
 		end
 	end
 

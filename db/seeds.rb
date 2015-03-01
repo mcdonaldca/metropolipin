@@ -65,57 +65,57 @@ central_park = Pin.new
 central_park.title = "Central Park"
 central_park.latitude = "40.782865"
 central_park.longitude = "-73.965355"
-central_park.city_id = 2
+central_park.city_id = new_york_city.id
 central_park.save()
 
 statue_of_liberty = Pin.new
 statue_of_liberty.title = "Statue of Liberty National Monument"
 statue_of_liberty.latitude = "40.689249"
 statue_of_liberty.longitude = "-74.0445"
-statue_of_liberty.city_id = 2
+statue_of_liberty.city_id = new_york_city.id
 statue_of_liberty.save()
 
 cheese_bar = Pin.new
 cheese_bar.title = "Murray's Cheese Bar"
 cheese_bar.latitude = "40.731249"
 cheese_bar.longitude = "-74.00322"
-cheese_bar.city_id = 2
+cheese_bar.city_id = new_york_city.id
 cheese_bar.save()
 
 # Ratings
 
-e_cheese_bar = Rating.new
-e_cheese_bar.pin_id = 3
-e_cheese_bar.user_id = 1
-e_cheese_bar.score = 5
-e_cheese_bar.save()
-
-l_cheese_bar = Rating.new
-l_cheese_bar.pin_id = 3
-l_cheese_bar.user_id = 3
-l_cheese_bar.score = 5
-l_cheese_bar.save()
+b_central_park = Rating.new
+b_central_park.pin_id = central_park.id
+b_central_park.user_id = bogdan.id
+b_central_park.score = 4
+b_central_park.save()
 
 e_statue_of_liberty = Rating.new
-e_statue_of_liberty.pin_id = 2
-e_statue_of_liberty.user_id = 2
+e_statue_of_liberty.pin_id = statue_of_liberty.id
+e_statue_of_liberty.user_id = erin.id
 e_statue_of_liberty.score = 2
 e_statue_of_liberty.save()
 
 l_statue_of_liberty = Rating.new
-l_statue_of_liberty.pin_id = 2
-l_statue_of_liberty.user_id = 3
+l_statue_of_liberty.pin_id = statue_of_liberty.id
+l_statue_of_liberty.user_id = lauren.id
 l_statue_of_liberty.score = 3
 l_statue_of_liberty.save()
 
 b_statue_of_liberty = Rating.new
-b_statue_of_liberty.pin_id = 2
-b_statue_of_liberty.user_id = 4
+b_statue_of_liberty.pin_id = statue_of_liberty.id
+b_statue_of_liberty.user_id = bogdan.id
 b_statue_of_liberty.score = 5
 b_statue_of_liberty.save()
 
-b_central_park = Rating.new
-b_central_park.pin_id = 1
-b_central_park.user_id = 4
-b_central_park.score = 4
-b_central_park.save()
+e_cheese_bar = Rating.new
+e_cheese_bar.pin_id = cheese_bar.id
+e_cheese_bar.user_id = erin.id
+e_cheese_bar.score = 5
+e_cheese_bar.save()
+
+l_cheese_bar = Rating.new
+l_cheese_bar.pin_id = cheese_bar.id
+l_cheese_bar.user_id = lauren.id
+l_cheese_bar.score = 5
+l_cheese_bar.save()
