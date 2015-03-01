@@ -132,11 +132,10 @@ $(".pin .row2").click(function() {
 	var next = $(this).parent().next();
 	if (next.hasClass("row3")) {
 		next.toggle();
+		$(this).children().toggleClass("up");
 	}
 });
 </script>
-
-
 
 
 

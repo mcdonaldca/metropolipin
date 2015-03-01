@@ -19,6 +19,10 @@ body {
 	background-image: url(<%= image_path 'swirl.png' %>);
 }
 
+.wrapper {
+	background-image: url(<%= image_path 'swirl.png' %>);
+}
+
 header {
 	position: relative;
 	text-align: center;
@@ -261,6 +265,7 @@ h2 {
 
 		.row1 {
 			padding: .5em 0 .25em 0;
+			cursor: pointer;
 
 			.pushpin {
 				background-image: url(<%= image_path 'pin_dark.png' %>);
@@ -286,8 +291,16 @@ h2 {
 				height: 1.8em;
 				padding-top: .2em;
 
+				&.up {
+					background-image: url(<%= image_path 'friends_dark_up.png' %>);
+				}
+
 				&.selected {
 					background-image: url(<%= image_path 'friends_blue.png' %>);
+
+					&.up {
+						background-image: url(<%= image_path 'friends_blue_up.png' %>);
+					}
 				}
 			}
 
@@ -363,6 +376,22 @@ h2 {
 			}
 		}
 	}
+}
+
+button, input[type="submit"] {
+	border: none;
+	box-shadow: none;
+	background-color: $dark-orange;
+	color: $cream;
+	padding: 1em 0;
+	width: 90%;
+	margin: 1em 5% .5em 5%;
+
+	font: 1em $cabin-stack;
+
+	@include border-radius(10px);
+
+	text-align: center;
 }
 
 .wrapper {

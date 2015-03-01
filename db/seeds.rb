@@ -75,21 +75,21 @@ bogdan.save()
 # Pins
 
 central_park = Pin.new
-central_park.title = "Central Park"
+central_park.title = "central park"
 central_park.latitude = "40.782865"
 central_park.longitude = "-73.965355"
 central_park.city_id = new_york_city.id
 central_park.save()
 
 statue_of_liberty = Pin.new
-statue_of_liberty.title = "Statue of Liberty National Monument"
+statue_of_liberty.title = "statue of liberty national monument"
 statue_of_liberty.latitude = "40.689249"
 statue_of_liberty.longitude = "-74.0445"
 statue_of_liberty.city_id = new_york_city.id
 statue_of_liberty.save()
 
 cheese_bar = Pin.new
-cheese_bar.title = "Murray's Cheese Bar"
+cheese_bar.title = "murray's cheese bar"
 cheese_bar.latitude = "40.731249"
 cheese_bar.longitude = "-74.00322"
 cheese_bar.city_id = new_york_city.id
