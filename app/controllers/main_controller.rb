@@ -118,6 +118,13 @@ class MainController < ApplicationController
 		render json: @blink
 	end
 
+	def blinkex
+		require "json"
+		my_hash = {:SUCCESS => 1, :LAT => params[:lat], :LONG => params[:long]}
+		@blink = JSON.generate(my_hash)
+		render json: @blink
+	end
+
 	def logout
 		session = nil
 		redirect_to index_url
