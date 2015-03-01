@@ -48,24 +48,28 @@ caitlin = User.new
 caitlin.fb_id = "10205425176300298"
 caitlin.first = "Caitlin"
 caitlin.last = "McDonald"
+caitlin.profile_picture = "http://graph.facebook.com/caitlinamcdonald/picture"
 caitlin.save()
 
 erin = User.new
 erin.fb_id = "10205425176300299"
 erin.first = "Erin"
 erin.last = "Hoffman"
+erin.profile_picture = "http://graph.facebook.com/EronHistorion/picture"
 erin.save()
 
 lauren = User.new
 lauren.fb_id = "10205425176300300"
 lauren.first = "Lauren"
 lauren.last = "Bretz"
+lauren.profile_picture = "http://graph.facebook.com/lauren.bretz.3/picture"
 lauren.save()
 
 bogdan = User.new
 bogdan.fb_id = "10205425176300301"
 bogdan.first = "Bogdan"
 bogdan.last = "Pozderca"
+bogdan.profile_picture = "http://graph.facebook.com/bogdan.pozderca/picture"
 bogdan.save()
 
 # Pins

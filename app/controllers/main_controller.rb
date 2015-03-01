@@ -15,6 +15,12 @@ class MainController < ApplicationController
 	def login
 		fb_id = params[:id]
 
+		if session[:userID].nil?
+			session[:userID] = params[:userID]
+		else
+			session[:userID] = "NOT FOUND"
+		end
+
 		user = User.find_by fb_id: fb_id
 
 		if user.nil?
@@ -29,6 +35,7 @@ class MainController < ApplicationController
 	end
 
 	def dashboard
+		@display = session[:userID]
 		@user = User.find session[:user]
 	end
 

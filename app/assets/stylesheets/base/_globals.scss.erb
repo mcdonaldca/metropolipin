@@ -221,3 +221,122 @@ h1#root {
 	margin: 3% 3% 0 3%;
 	padding: 0px
 }
+
+.pin-details {
+
+	width: 100%;
+	margin-top: 3%;
+
+	.pin {
+		background-color: rgba(219, 158, 54, .55);
+		width: 95%;
+		padding-left: 5%;
+		border-bottom: 1px solid $orange;
+
+		.row {
+			height: 2em;
+			width: 100%;
+
+			.circle {
+				display: inline-block;
+				@include border-radius(50%);
+				height: 2em;
+				width: 2em;
+			}
+		}
+
+		.row1 {
+			padding: .5em 0 .25em 0;
+
+			.pushpin {
+				background-image: url(<%= image_path 'pin_dark.png' %>);
+				background-size: 2em 2em;
+				background-position: 0 0;
+
+				&.selected {
+					background-image: url(<%= image_path 'pin_blue.png' %>);
+				}
+			}
+		}
+
+		.row2 {
+			padding: .25em 0 .5em 0;
+
+			.friends {
+				background-image: url(<%= image_path 'friends_dark.png' %>);
+				background-size: 2em 2em;
+				background-position: 0 0;
+				color: $cream;
+				font-family: $cabin-stack;
+				text-align: center;
+				height: 1.8em;
+				padding-top: .2em;
+
+				&.selected {
+					background-image: url(<%= image_path 'friends_blue.png' %>);
+				}
+			}
+		}
+
+		h2 {
+			display: inline-block;	
+			position: relative;
+			color: $dark-orange;
+			font: 1.1em $cabin-stack;
+			top: -.5em;
+			left: 1em;
+
+			&.selected {
+				color: $blu;
+			}
+		}
+
+		h3 {
+			display: inline-block;	
+			position: relative;
+			color: $dark-orange;
+			font: .9em $cabin-stack;
+			top: -.7em;
+			left: 1.25em;
+
+			&.selected {
+				color: $blu;
+			}
+		}
+
+		&.selected {
+			background-color: rgba(189, 73, 50, .55);
+		}
+	}
+
+	.row3 {
+		display: none;
+		background-color: $blu;
+		margin: 0;
+		padding: 0;
+		
+
+		.item {
+			height: 2.25em;
+			border-bottom: 1px darken($blu, 5%) solid;
+			padding-top: .25em;
+			padding-left: 5%;
+
+			.circle {
+				display: inline-block;
+				@include border-radius(50%);
+				height: 2em;
+				width: 2em;
+			}
+
+			h3 {
+				display: inline-block;	
+				position: relative;
+				color: $cream;
+				font: .9em $cabin-stack;
+				top: -.7em;
+				left: 1.25em;
+			}
+		}
+	}
+}
