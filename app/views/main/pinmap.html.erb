@@ -1,7 +1,7 @@
 <div class="options">
 	<div class="backwards">
 	</div><div class="forwards">
-		<%= link_to "your pintrip >>", pintrip_url %>
+		<%= link_to "your pintrip >>", pins_url %>
 	</div>
 </div>
 
@@ -42,6 +42,19 @@
 				map: map,
 				position: pinLatLng,
 				icon: "<%= asset_path('friend_pin.png') %>"
+			});
+		<% end %>
+
+		<% @trip.ratings.each do |rating| %>
+			pinLatLng = new google.maps.LatLng(<%= rating.pin.latitude %>, <%= rating.pin.longitude %>);
+			var marker = new google.maps.Marker( {
+				map: map,
+				position: pinLatLng,
+				<% if rating.score.nil? %>
+					icon: "<%= asset_path('0-marker.png') %>"
+				<% else %>
+					icon: "<%= asset_path(rating.score.to_s + '-marker.png') %>"
+				<% end %>
 			});
 		<% end %>
 	}

@@ -1,9 +1,12 @@
 
-<%= form_tag do %>
+<%= form_tag drop_rating_url do %>
 
-<input type="text" name="lat">
-<input type="text" name="long">
+<div style="margin-top: 3em;text-align:center;">
+	Latitude: <input type="text" name="lat"><br>
+	Longtidue: <input type="text" name="long"><br>
+	<%= submit_tag "drop pin" %>
+</div>
 
-<%= submit_tag "drop pin" %>
+
 
 <% end %>

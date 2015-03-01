@@ -416,7 +416,139 @@ button, .pin-form input[type="submit"] {
 	}
 }
 
+.dropped-details {
+	width: 100%;
+	margin-top: 3%;
 
+	.dropped-pin {
+		background-color: rgba(219, 158, 54, .55);
+		width: 100%;
+		border-bottom: 1px solid $orange;
+
+		.leave-a-note {
+			display: inline-block;
+			padding: .25em .5em;
+			background-color: $dark-orange;
+			color: $cream;
+			text-decoration: none;
+			font-family: $cabin-stack;
+
+			position: relative;
+			top: -.5em;
+
+			@include border-radius(5px);
+
+			img {
+				height: 1em;
+				width: 1em;
+				display: inline-block;
+				position: relative;
+				top: .20em;
+			}
+		}
+
+		h2 {
+			display: inline-block;
+			color: $dark-orange;
+			width: 100%;
+			text-align: center;
+			font: 1.1em $cabin-stack;
+			margin: .5em 0;
+		}
+
+		.score {
+			text-align: center;
+			margin: 0;
+
+			.emoji {
+				width: 1.5em;
+				height: 1.5em;
+				display: inline-block;
+				margin-top: 0 .5em;
+				@include border-radius(50%);
+				border: 2px solid $dark-orange;
+
+				&.nil {
+					-webkit-filter: grayscale(100%); 
+					filter: grayscale(100%);
+				}
+			}
+		}
+
+		.more-info {
+			background-color: $dark-orange;
+			text-align: center;
+			height: 1.5em;
+			border-bottom: 1px solid darken($dark-orange, 5%);
+
+			.arrow {
+				width: 1em;
+				height: 1em;
+			}
+		}
+
+		.friends {
+			background-color: $blu;
+
+
+			.friend-review {
+				border-bottom: 1px solid darken($blu, 5%);
+				height: 1.75em;
+				padding: .25em 0 0 .2em;
+
+				.third {
+					width: 33%;
+					display: inline-block;
+				}
+
+				.circle {
+					height: 1.5em;
+					width: 1.5em;
+					background-color: $orange;
+					@include border-radius(50%);
+				}
+
+				h3 {
+					display: inline-block;	
+					position: relative;
+					color: $cream;
+					font: .9em $cabin-stack;
+					height: .9em;
+					top: -1.5em;
+					left: 2.25em;
+				}
+
+				.score {
+					display: inline-block;
+					width: 100%;
+					text-align: center;
+					position: relative;
+					top: -.775em;
+
+					img {
+						height: 1.5em;
+						width: 1.5em;
+					}
+				}
+
+				.notes {
+					width: 100%;
+					text-align: right;
+					position: relative;
+					top: -.775em;
+
+					img {
+						height: 1.5em;
+						width: 1.5em;
+					}
+				}
+
+			}
+			
+		}
+	}
+
+}
 
 .wrapper {
 	min-height: 100%;

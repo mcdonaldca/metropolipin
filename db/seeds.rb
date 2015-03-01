@@ -85,7 +85,7 @@ central_park.city_id = new_york_city.id
 central_park.save()
 
 statue_of_liberty = Pin.new
-statue_of_liberty.title = "statue of liberty national monument"
+statue_of_liberty.title = "liberty island"
 statue_of_liberty.latitude = "40.689249"
 statue_of_liberty.longitude = "-74.0445"
 statue_of_liberty.city_id = new_york_city.id

@@ -22,7 +22,7 @@
 					<% pin.ratings.each do |rating| %>
 						<div class="circle friend" id="friend<%= pin.id %>" style="background-image:url(<%= rating.user.profile_picture %>);background-size:2em 2em;">
 						</div>
-						<h3><%= rating.user.first %> <%= rating.user.last[0].upcase %></h3>
+						<h3><%= rating.user.first.downcase %> <%= rating.user.last[0].downcase %></h3>
 					<% end %>
 				<% else %>
 					<div class="circle friends">

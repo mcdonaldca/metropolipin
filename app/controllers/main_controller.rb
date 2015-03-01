@@ -171,9 +171,6 @@ class MainController < ApplicationController
 
 	end
 
-	def pintrip
-	end
-
 	def finalize_trip
 		require 'rubygems'          # This line not needed for ruby > 1.8
 		require 'twilio-ruby'
@@ -204,14 +201,25 @@ class MainController < ApplicationController
 
 		end
 
-		redirect_to pins_url
+		redirect_to pinmap_url
 	end
 
 	def pins
 		@trip = Trip.find session[:trip]
 	end
 
-	def stops
+	def set_rating
+		rating_id = params[:id]
+		score = params[:score]
+
+		rating = Rating.find rating_id
+		rating.score = score
+		rating.save()
+
+		redirect_to pintrip_url
+	end
+
+	def pintrip
 		@trip = Trip.find session[:trip]
 	end
 
@@ -220,22 +228,43 @@ class MainController < ApplicationController
 		@city = City.find @trip.city_id
 	end
 
+	def blinkex
+		trip = Trip.find session[:trip]
+		rating = Rating.new
+		rating.user_id = session[:user]
+		rating.trip_id = session[:trip]
+		rating.score = nil
 
-	def blink
+		lat = params[:lat]
+		long = params[:long]
 
-		if session[:blink].nil?
-			session[:blink] = 0
-		else
-			session[:blink] += 1
+		base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+		base_url += params[:lat] + ","
+		base_url += params[:long] 
+		base_url += "&radius=25&key=AIzaSyBNvTW58zon3XwTd-r6oYELh6NDMR7zfuY"
+
+		uri = URI(base_url)
+		res = Net::HTTP.get_response(uri).body
+		@item = JSON.parse(res)["results"][0]
+		@lat = @item["geometry"]["location"]["lat"]
+		@lng = @item["geometry"]["location"]["lng"]
+		@title = @item["name"]
+
+		pin = Pin.find_by title: @title.downcase
+
+		if pin.nil?
+			pin = Pin.new
+			pin.title = @title
+			pin.latitude = @lat
+			pin.longitude = @lng
+			pin.city_id = trip.city_id
+			pin.save()
 		end
 
-		require "json"
-		my_hash = {:SUCCESS => 1, :BLINK => session[:blink]}
-		@blink = JSON.generate(my_hash)
-		render json: @blink
-	end
+		rating.pin_id = pin.id
+		rating.save()
 
-	def blinkex
+
 		require "json"
 		my_hash = {:SUCCESS => 1, :LAT => params[:lat], :LONG => params[:long]}
 		@blink = JSON.generate(my_hash)
@@ -270,6 +299,44 @@ class MainController < ApplicationController
 	end
 
 	def cheat
+	end
+
+	def drop_rating
+		trip = Trip.find session[:trip]
+		rating = Rating.new
+		rating.user_id = session[:user]
+		rating.trip_id = session[:trip]
+		rating.score = nil
+
+		lat = params[:lat]
+		long = params[:long]
+
+		base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+		base_url += params[:lat] + ","
+		base_url += params[:long] 
+		base_url += "&radius=25&key=AIzaSyBNvTW58zon3XwTd-r6oYELh6NDMR7zfuY"
+
+		uri = URI(base_url)
+		res = Net::HTTP.get_response(uri).body
+		@item = JSON.parse(res)["results"][0]
+		@lat = @item["geometry"]["location"]["lat"]
+		@lng = @item["geometry"]["location"]["lng"]
+		@title = @item["name"]
+
+		pin = Pin.find_by title: @title.downcase
+
+		if pin.nil?
+			pin = Pin.new
+			pin.title = @title
+			pin.latitude = @lat
+			pin.longitude = @lng
+			pin.city_id = trip.city_id
+			pin.save()
+		end
+
+		rating.pin_id = pin.id
+		rating.save()
+		redirect_to pintrip_url
 	end
 
 	private

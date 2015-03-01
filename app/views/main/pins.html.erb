@@ -1,9 +1,67 @@
 <div class="options">
 	<div class="backwards">
 		<%= link_to "<< map", pinmap_url %>
+	</div><div class="forwards">
+		<%= link_to "dropped pins >>", pintrip_url %>
 	</div>
 </div>
 
-<h1>your pins</h1>
+<h1>your planned pins</h1>
 
-<%= @trip.city_id %>
+<div class="dropped-details">
+	<% @trip.stops.each do |stop| %>
+		<div class="dropped-pin">
+			<h2><%= stop.title %> <small style="font-size:.6em;"><%= stop.time.strftime("%I:%M %p") %></small></h2>
+			<div class="more-info" data-id="<%= stop.id %>">
+				<%= image_tag "friends_dark.png", :class => "arrow" %>
+			</div>
+			<% if stop.pin_type == "Pin" %>
+				<div class="friends" id="friends<%= stop.id %>" style="display:none">
+					<% stop.pin.ratings.each do |rating| %>
+						<% if rating.user_id != session[:user] %>
+							<div class="friend-review">
+								<div class="third">
+									<div class='circle' style="background-image:url(<%= rating.user.profile_picture %>);background-size:1.5em 1.5em;">
+									</div>
+									<h3><%= rating.user.first.downcase %> <%= rating.user.last[0].downcase %></h3>
+								</div><div class="third">
+									<div class="score">
+										<%= image_tag rating.score.to_s + ".png", :class => "emoji" %>
+									</div>
+								</div><div class="third">
+									<div class="notes">
+										<%= image_tag "phone.png", :class => "emoji", :style => "border-radius:50%;" %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+			<% else %>
+				<% @pin = YelpPin.find stop.pin_id %>
+				<div class="friends" id="friends<%= stop.id %>" style="display:none">
+					<div class="friend-review">
+						<div class="third">
+							<div class='circle' style="background-image:url(<%= image_path 'yelp_dark.png' %>);background-size:1.5em 1.5em;">
+							</div>
+							<h3>yelp</h3>
+						</div><div class="third">
+							<div class="score">
+								<%= image_tag @pin.rating.to_s + ".png", :class => "emoji" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end%>
+		</div>
+	<% end %>
+</div>
+
+
+<script>
+$(".more-info").click(function() {
+	var id = $(this).attr("data-id");
+	$(this).toggleClass("up");
+	$("#friends" + id).toggle();
+});
+</script>

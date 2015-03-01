@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'recording' => "main#recording", :as => "recording"
 
   get 'cheat' => "main#cheat", :as => "cheat"
+  post 'drop_rating' => "main#drop_rating", :as => "drop_rating"
+
+  post 'set_rating/:id/:score' => "main#set_rating", :as => "set_rating"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

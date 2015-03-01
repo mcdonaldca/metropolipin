@@ -1,0 +1,66 @@
+<div class="options">
+	<div class="backwards">
+		<%= link_to "<< planned pins", pins_url %>
+	</div>
+</div>
+
+<h1>your dropped pins</h1>
+
+<div class="dropped-details">
+	<% @trip.ratings.each do |rating| %>
+		<div class="dropped-pin">
+			<h2><%= rating.pin.title %></h2>
+			<div class="score" style="text-align:left;padding-left:5%;width:45%;display:inline-block;">
+				<%= link_to set_rating_url(rating.id, 1), :style => "text-decoration:none;", method: :post do %>
+					<% if rating.score.nil? %>
+						<%= image_tag "1.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "1.png", :class => "emoji" %>
+					<% end %>
+				<% end %>
+				<%= link_to set_rating_url(rating.id, 2), :style => "text-decoration:none;", method: :post do %>
+					<% if rating.score.nil? or rating.score < 2 %>
+						<%= image_tag "2.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "2.png", :class => "emoji" %>
+					<% end %>
+				<% end %>
+				<%= link_to set_rating_url(rating.id, 3), :style => "text-decoration:none;", method: :post do %>
+					<% if rating.score.nil? or rating.score < 3 %>
+						<%= image_tag "3.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "3.png", :class => "emoji" %>
+					<% end %>
+				<% end %>
+				<%= link_to set_rating_url(rating.id, 4), :style => "text-decoration:none;", method: :post do %>
+					<% if rating.score.nil? or rating.score < 4 %>
+						<%= image_tag "4.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "4.png", :class => "emoji" %>
+					<% end %>
+				<% end %>
+				<%= link_to set_rating_url(rating.id, 5), :style => "text-decoration:none;", method: :post do %>
+					<% if rating.score.nil? or rating.score < 5 %>
+						<%= image_tag "5.png", :class => "emoji nil" %>
+					<% else %>
+						<%= image_tag "5.png", :class => "emoji" %>
+					<% end %>
+				<% end %>
+			</div><div style="display:inline-block;text-align:right;width:45%;padding-right:5%;">
+				<a class="leave-a-note" href="">
+					leave a note
+					<%= image_tag "phone.png", :class => "emoji" %>
+				</a>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+<script>
+$(".more-info").click(function() {
+	var id = $(this).attr("data-id");
+	$(this).toggleClass("up");
+	$("#friends" + id).toggle();
+});
+</script>
