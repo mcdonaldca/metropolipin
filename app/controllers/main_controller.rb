@@ -15,7 +15,11 @@ class MainController < ApplicationController
 	def login
 		fb_id = params[:id]
 
-		session[:userID] = params[:userID]
+		if session[:userID].nil?
+			session[:userID] = params[:userID]
+		else
+			session[:userID] = "NOT FOUND"
+		end
 
 		user = User.find_by fb_id: fb_id
 
