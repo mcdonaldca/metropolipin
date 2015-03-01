@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 
-	before_filter :authenticate, :except => [:index, :login, :blink, :blinkex]
+	before_filter :authenticate, :except => [:index, :login, :blink]
 
 	def index
 		
@@ -82,7 +82,7 @@ class MainController < ApplicationController
 
 			if food_pin.nil?
 				food_pin = YelpPin.new
-				food_pin.title = arts_title
+				food_pin.title = food_title
 				food_pin.rating = food_result.rating
 				food_pin.latitude = food_result.location.coordinate.latitude
 				food_pin.longitude = food_result.location.coordinate.longitude
@@ -91,7 +91,7 @@ class MainController < ApplicationController
 
 			if tour_pin.nil?
 				tour_pin = YelpPin.new
-				tour_pin.title = arts_title
+				tour_pin.title = tour_title
 				tour_pin.rating = tour_result.rating
 				tour_pin.latitude = tour_result.location.coordinate.latitude
 				tour_pin.longitude = tour_result.location.coordinate.longitude
@@ -246,6 +246,10 @@ class MainController < ApplicationController
 		uri = URI(base_url)
 		res = Net::HTTP.get_response(uri).body
 		item = JSON.parse(res)["results"][0]
+		if item.nil?
+			item = JSON.parse(res)["results"]
+		end
+
 		lat = item["geometry"]["location"]["lat"]
 		lng = item["geometry"]["location"]["lng"]
 		title = item["name"]
@@ -254,7 +258,7 @@ class MainController < ApplicationController
 
 		if pin.nil?
 			pin = Pin.new
-			pin.title = title
+			pin.title = title.downcase
 			pin.latitude = lat
 			pin.longitude = lng
 			pin.city_id = trip.city_id
@@ -263,7 +267,6 @@ class MainController < ApplicationController
 
 		rating.pin_id = pin.id
 		rating.save()
-
 
 		require "json"
 		my_hash = {
@@ -333,7 +336,7 @@ class MainController < ApplicationController
 
 		if pin.nil?
 			pin = Pin.new
-			pin.title = @title
+			pin.title = @title.downcase
 			pin.latitude = @lat
 			pin.longitude = @lng
 			pin.city_id = trip.city_id
