@@ -235,12 +235,12 @@ class MainController < ApplicationController
 		rating.trip_id = session[:trip]
 		rating.score = nil
 
-		lat = params[:lat]
-		long = params[:long]
+		lat = params[:lat].to_i / 1000000
+		long = params[:long].to_i / 1000000
 
 		base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
-		base_url += params[:lat] + ","
-		base_url += params[:long] 
+		base_url += lat.to_s + ","
+		base_url += long.to_s 
 		base_url += "&radius=25&key=AIzaSyBNvTW58zon3XwTd-r6oYELh6NDMR7zfuY"
 
 		uri = URI(base_url)
