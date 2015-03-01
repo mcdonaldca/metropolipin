@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'pinmap' => "main#pinmap", :as => "pinmap"
   post 'finalize_trip' => "main#finalize_trip", :as => "finalize_trip"
 
-  get 'make_recording' => "main#make_recording", :as => "make_recording"
+  get 'recording' => "main#recording", :as => "recording"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

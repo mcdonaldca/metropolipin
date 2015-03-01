@@ -237,8 +237,8 @@ class MainController < ApplicationController
 		end
 	end
 
-	def make_recording
-		redirect_to dashboard_url
+	def recording
+		#redirect_to dashboard_url
 	end
 
 end
