@@ -211,6 +211,10 @@ class MainController < ApplicationController
 		@trip = Trip.find session[:trip]
 	end
 
+	def stops
+		@trip = Trip.find session[:trip]
+	end
+
 	def pinmap
 		@trip = Trip.find session[:trip]
 		@city = City.find @trip.city_id
@@ -263,6 +267,9 @@ class MainController < ApplicationController
 	def logout
 		session = nil
 		redirect_to index_url
+	end
+
+	def cheat
 	end
 
 	private
