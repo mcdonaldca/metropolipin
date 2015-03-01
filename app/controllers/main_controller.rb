@@ -228,35 +228,35 @@ class MainController < ApplicationController
 		@city = City.find @trip.city_id
 	end
 
-	def blinkex
+	def blink
 		trip = Trip.find session[:trip]
 		rating = Rating.new
 		rating.user_id = session[:user]
 		rating.trip_id = session[:trip]
 		rating.score = nil
 
-		lat = params[:lat].to_i / 1000000
-		long = params[:long].to_i / 1000000
+		latx = params[:lat].to_i / 1000000.0
+		longx = params[:long].to_i / 1000000.0
 
 		base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
-		base_url += lat.to_s + ","
-		base_url += long.to_s 
+		base_url += latx.to_s + ","
+		base_url += longx.to_s 
 		base_url += "&radius=25&key=AIzaSyBNvTW58zon3XwTd-r6oYELh6NDMR7zfuY"
 
 		uri = URI(base_url)
 		res = Net::HTTP.get_response(uri).body
-		@item = JSON.parse(res)["results"][0]
-		@lat = @item["geometry"]["location"]["lat"]
-		@lng = @item["geometry"]["location"]["lng"]
-		@title = @item["name"]
+		item = JSON.parse(res)["results"][0]
+		lat = item["geometry"]["location"]["lat"]
+		lng = item["geometry"]["location"]["lng"]
+		title = item["name"]
 
-		pin = Pin.find_by title: @title.downcase
+		pin = Pin.find_by title: title.downcase
 
 		if pin.nil?
 			pin = Pin.new
-			pin.title = @title
-			pin.latitude = @lat
-			pin.longitude = @lng
+			pin.title = title
+			pin.latitude = lat
+			pin.longitude = lng
 			pin.city_id = trip.city_id
 			pin.save()
 		end
@@ -266,7 +266,13 @@ class MainController < ApplicationController
 
 
 		require "json"
-		my_hash = {:SUCCESS => 1, :LAT => params[:lat], :LONG => params[:long]}
+		my_hash = {
+			:SUCCESS => 1, 
+			:LAT => params[:lat], 
+			:LONG => params[:long],
+			:LATX => latx,
+			:LONGX => longx
+		}
 		@blink = JSON.generate(my_hash)
 		render json: @blink
 	end
