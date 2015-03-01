@@ -35,8 +35,8 @@
 			pinLatLng = new google.maps.LatLng(<%= pin.latitude %>, <%= pin.longitude %>);
 			var marker = new google.maps.Marker( {
 				map: map,
-				position: pinLatLng
-				// icon: image
+				position: pinLatLng,
+				icon: "<%= asset_path('friend_pin.png') %>"
 			});
 		<% end %>
 	}
