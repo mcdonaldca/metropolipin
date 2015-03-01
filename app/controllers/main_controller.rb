@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 
-	before_filter :authenticate, :except => [:index, :login]
+	before_filter :authenticate, :except => [:index, :login, :blink, :blinkex]
 
 	def index
 		
@@ -52,33 +52,57 @@ class MainController < ApplicationController
 		@tour_pins = {}
 		for i in 0..4
 
-			art_pin = YelpPin.new
-			food_pin = YelpPin.new
-			tour_pin = YelpPin.new
-
 			arts_result = arts_response[i]
 			food_result = food_response[i]
 			tour_result = tour_response[i]
 
-			arts_pin = {}
-			food_pin = {}
-			tour_pin = {}
+			arts_name = arts_result.name.downcase
+			food_name = food_result.name.downcase
+			tour_name = tour_result.name.downcase
 
-			arts_pin["name"] = arts_result.name
-			food_pin["name"] = food_result.name
-			tour_pin["name"] = tour_result.name
+			arts_find = YelpPin.find_by name: arts_name 
+			food_find = YelpPin.find_by name: food_name
+			tour_find = YelpPin.find_by name: tour_name
 
-			arts_pin["rating"] = arts_result.rating
-			food_pin["rating"] = food_result.rating
-			tour_pin["rating"] = tour_result.rating
+			if arts_find.nil?
 
+				arts_pin = YelpPin.new
+				arts_pin.name = arts_name
+			end
+
+			food_pin = YelpPin.new
+			tour_pin = YelpPin.new
+			#arts_pin = {}
+			#food_pin = {}
+			#tour_pin = {}
+
+
+			
+
+			arts_pin.name = arts_result.rating
+			food_pin.name = food_result.rating
+			tour_pin.name = tour_result.rating
+			#arts_pin["rating"] = arts_result.rating
+			#food_pin["rating"] = food_result.rating
+			#tour_pin["rating"] = tour_result.rating
+
+			arts_pin.name = arts_result.rating
+			food_pin.name = food_result.rating
+			tour_pin.name = tour_result.rating
 			arts_pin["latitude"] = arts_result.location.coordinate.latitude
 			food_pin["latitude"] = food_result.location.coordinate.latitude
 			tour_pin["latitude"] = tour_result.location.coordinate.latitude
 
+			arts_pin.name = arts_result.rating
+			food_pin.name = food_result.rating
+			tour_pin.name = tour_result.rating
 			arts_pin["longitude"] = arts_result.location.coordinate.longitude
 			food_pin["longitude"] = food_result.location.coordinate.longitude
 			tour_pin["longitude"] = tour_result.location.coordinate.longitude
+
+			arts_pin.save()
+			food_pin.save()
+			tour_pin.save()
 			
 			@arts_pins[i] = arts_pin
 			@food_pins[i] = food_pin
