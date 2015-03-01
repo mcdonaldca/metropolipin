@@ -12,28 +12,6 @@ class MainController < ApplicationController
 
 	end
 
-	def login
-		fb_id = params[:id]
-
-		if session[:userID].nil?
-			session[:userID] = params[:userID]
-		else
-			session[:userID] = "NOT FOUND"
-		end
-
-		user = User.find_by fb_id: fb_id
-
-		if user.nil?
-			user = User.new
-			user.fb_id = fb_id
-			user.first = params[:first]
-			user.last = params[:last]
-			user.save
-		end
-
-		session[:user] = user.id
-	end
-
 	def dashboard
 		@display = session[:userID]
 		@user = User.find session[:user]
@@ -56,6 +34,7 @@ class MainController < ApplicationController
 
 		@city = City.find_by city: session[:search]
 
+		require 'rubygems' # not necessary with ruby 1.9 but included for completeness
 		require 'yelp'
 		client = Yelp::Client.new({ consumer_key: "JSTcs5H0D2gItBX9NwtbOg",
                             consumer_secret: "cp4-k3TIst1X8hw5JLrb8vXJpC4",
@@ -72,6 +51,11 @@ class MainController < ApplicationController
 		@food_pins = {}
 		@tour_pins = {}
 		for i in 0..4
+
+			art_pin = YelpPin.new
+			food_pin = YelpPin.new
+			tour_pin = YelpPin.new
+
 			arts_result = arts_response[i]
 			food_result = food_response[i]
 			tour_result = tour_response[i]
@@ -104,6 +88,20 @@ class MainController < ApplicationController
 		
 	end
 
+	def pintrip
+		@pin_stops = params[:pin_stops]
+		@yelp_stops = params[:yelp_stops]
+
+		city = City.find_by city: session[:search].downcase
+
+		pintrip = Trip.new		
+		pintrip.city_id = city.id
+		pintrip.user_id = session[:user]
+		pintrip.completed = 0
+		pintrip.save()
+
+	end
+
 	def blink
 
 		if session[:blink].nil?
@@ -123,6 +121,28 @@ class MainController < ApplicationController
 		my_hash = {:SUCCESS => 1, :LAT => params[:lat], :LONG => params[:long]}
 		@blink = JSON.generate(my_hash)
 		render json: @blink
+	end
+
+	def login
+		fb_id = params[:id]
+
+		if session[:userID].nil?
+			session[:userID] = params[:userID]
+		else
+			session[:userID] = "NOT FOUND"
+		end
+
+		user = User.find_by fb_id: fb_id
+
+		if user.nil?
+			user = User.new
+			user.fb_id = fb_id
+			user.first = params[:first]
+			user.last = params[:last]
+			user.save
+		end
+
+		session[:user] = user.id
 	end
 
 	def logout

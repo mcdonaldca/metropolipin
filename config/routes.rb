@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   get 'dashboard' => 'main#dashboard', :as => "dashboard"
 
   get 'blink' => "main#blink", :as => "blink"
-  get 'blink/lat/long' => "main#blinkex", :as => "blinkex"
+  get 'blink/:lat/:long' => "main#blinkex", :as => "blinkex"
   get 'logout' => "main#logout", :as => "logout"
 
   post 'explore' => "main#explore", :as => "explore"
   get 'explore' => "main#explore", :as => "explore_get"
   get 'pindex' => "main#pindex", :as => "pindex"
+  post 'pintrip' => "main#pintrip", :as => "pintrip"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

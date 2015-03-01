@@ -95,40 +95,66 @@ cheese_bar.longitude = "-74.00322"
 cheese_bar.city_id = new_york_city.id
 cheese_bar.save()
 
+# Trips
+
+bogdan_trip = Trip.new
+bogdan_trip.city_id = new_york_city.id
+bogdan_trip.user_id = bogdan.id
+bogdan_trip.completed = 1
+bogdan_trip.save()
+
+erin_trip = Trip.new
+erin_trip.city_id = new_york_city.id
+erin_trip.user_id = erin.id
+erin_trip.completed = 1
+erin_trip.save()
+
+lauren_trip = Trip.new
+lauren_trip.city_id = new_york_city.id
+lauren_trip.user_id = lauren.id
+lauren_trip.completed = 1
+lauren_trip.save()
+
 # Ratings
 
 b_central_park = Rating.new
 b_central_park.pin_id = central_park.id
 b_central_park.user_id = bogdan.id
 b_central_park.score = 4
+b_central_park.trip_id = bogdan_trip.id
 b_central_park.save()
 
 e_statue_of_liberty = Rating.new
 e_statue_of_liberty.pin_id = statue_of_liberty.id
 e_statue_of_liberty.user_id = erin.id
 e_statue_of_liberty.score = 2
+e_statue_of_liberty.trip_id = erin_trip.id
 e_statue_of_liberty.save()
 
 l_statue_of_liberty = Rating.new
 l_statue_of_liberty.pin_id = statue_of_liberty.id
 l_statue_of_liberty.user_id = lauren.id
 l_statue_of_liberty.score = 3
+l_statue_of_liberty.trip_id = lauren_trip.id
 l_statue_of_liberty.save()
 
 b_statue_of_liberty = Rating.new
 b_statue_of_liberty.pin_id = statue_of_liberty.id
 b_statue_of_liberty.user_id = bogdan.id
 b_statue_of_liberty.score = 5
+b_statue_of_liberty.trip_id = bogdan_trip.id
 b_statue_of_liberty.save()
 
 e_cheese_bar = Rating.new
 e_cheese_bar.pin_id = cheese_bar.id
 e_cheese_bar.user_id = erin.id
 e_cheese_bar.score = 5
+e_statue_of_liberty.trip_id = erin_trip.id
 e_cheese_bar.save()
 
 l_cheese_bar = Rating.new
 l_cheese_bar.pin_id = cheese_bar.id
 l_cheese_bar.user_id = lauren.id
 l_cheese_bar.score = 5
+l_statue_of_liberty.trip_id = lauren_trip.id
 l_cheese_bar.save()
