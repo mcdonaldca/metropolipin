@@ -31,9 +31,15 @@
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		
-		//var image = "img/" + type + ".png";
-	  	//var marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(latitude, longitude), icon: image });
+		<% @city.pins.each do |pin| %>
+			pinLatLng = new google.maps.LatLng(<%= pin.latitude %>, <%= pin.longitude %>);
+			var marker = new google.maps.Marker( {
+				map: map,
+				position: pinLatLng
+				// icon: image
+			});
+		<% end %>
 	}
-  	//initialize(41.414495, 2.152694);
+
   	initialize(<%= @city.latitude %>, <%= @city.longitude %>);
 </script>
