@@ -5,6 +5,61 @@
 	</div>
 </div>
 
+<h3>Top 5 Arts & Entertainment </h3>
+<ol>
+	<% for i in 0..4 %>
+		<% pin = @arts_pins[i] %>
+		<li>
+			<h5>
+				<%= pin["name"] %>
+			</h5>
+			<p>
+				Rating: <%= pin["rating"] %>
+			</p>
+			<p>
+				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
+			</p>
+		</li>	
+	<% end %>
+</ol>
+
+<h3>Top 5 Food & Beverage </h3>
+<ol>
+	<% for i in 0..4 %>
+		<% pin = @food_pins[i] %>
+		<li>
+			<h5>
+				<%= pin["name"] %>
+			</h5>
+			<p>
+				Rating: <%= pin["rating"] %>
+			</p>
+			<p>
+				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
+			</p>
+		</li>	
+	<% end %>
+</ol>
+
+<h3>Top 5 Tours & Attractions </h3>
+<ol>
+	<% for i in 0..4 %>
+		<% pin = @tour_pins[i] %>
+		<li>
+			<h5>
+				<%= pin["name"] %>
+			</h5>
+			<p>
+				Rating: <%= pin["rating"] %>
+			</p>
+			<p>
+				(<%= pin["latitude"] %>, <%= pin["longitude"] %> )
+			</p>
+		</li>	
+	<% end %>
+</ol>
+
+
 <div class="pin-details">
 	<% @city.pins.each do |pin| %>
 		<div class="pin" id="pin<%= pin.id %>" data-id="<%= pin.id %>">
@@ -58,3 +113,4 @@ $(".pin .row2").click(function() {
 	}
 });
 </script>
+
